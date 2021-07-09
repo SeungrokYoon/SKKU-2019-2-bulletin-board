@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Signup Form</title>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	</head>
+	<body>
+        <div id="" class="signup-page">
+            <div class="form">
+                <input id="user_name" type="text" placeholder="user name"/>
+                <input id="login_id" type="text" placeholder="user id"/>
+                <!-- <button id="btn_check_id" class="button">Check ID</button> -->
+                <p id="messageID" class="message"></p>
+                <input id="login_pwd" type="password" placeholder="user password"/>
+                <input id="confirm_pwd" type="password" placeholder="confirm password"/>
+                <p id="messageSafe" class="message"></p>
+                <p id="messagePWD" class="message"></p>
+                <input id="email" type="text" placeholder="email"/>
+                <p id="messageEmail" class="message"></p>
+                <button id="btn_signup" class="button" hidden="hidden">CREATE</button>
+                <p class="message"><a href="/">Cancel</a></p>
+            </div>
+        </div>
+<!-- Password Validation -->
+        <div id="pswd_info">
+            <h4>비밀번호는 다음과 같은 4가지 조건을 충족시켜야 합니다:</h4>
+            <ul>
+                <li id="letter" class="invalid">At least <strong>one letter</strong></li>
+                <li id="capital" class="invalid">At least <strong>one capital letter</strong></li>
+                <li id="number" class="invalid">At least <strong>one number</strong></li>
+                <li id="length" class="invalid">Be at least <strong>8 characters</strong></li>
+            </ul>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="/javascripts/signup.js"></script>
+	</body>
+</html>

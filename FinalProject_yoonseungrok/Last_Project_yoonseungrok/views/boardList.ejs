@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Board</title>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	</head>
+	<body>
+		<div class="board-page">
+			<div class="board">
+				<p align="right">  <%=login_id%>(<%=user_name %>)님 환영합니다.
+					<button id="btn_logout">Log-out</button>
+					<button id="btn_user_admin">사용자관리</button></p>
+
+				<h1>글 목록</h1>
+
+				<!-- 검색 시작 -->
+				<div class="search" align="right">
+					<form action = "/board/list/search" id="searchKey" method = "post">
+						<!-- 이거 선택할 수 있게 수정하면 좋을텐데...시간이되려나 -->
+						<button id="sortOfSearch" type="text" readonly>제목+내용+작성자</button>
+						<input name="searchKeyword" id = "searchKey" type="text" />
+						<button id="btn_search">검색</button>
+					</form>
+				</div>
+				<!-- 검색 종료 -->
+
+				<table class="title">
+					<tr>
+						<th width="20%">번호</th>
+						<th width="40%">제목</th>
+						<th width="20%">작성자ID</th>
+						<th width="20%">등록일</th>
+						<!-- <th width="20%">수정일</th> -->
+
+					</tr>
+				</table>
+				<table class="content">
+					<!-- routes/board.js 에서 render할때 보내준 두번째 인자를 변수처럼사용가능 -->
+					<% if(status == 'OK') { %>
+						<% if(data.length == 0) { %>
+							<tr>
+								<td colspan="4">데이터가 없다.</td>
+							</tr>
+						<% } else { %>
+							<% data.forEach(function(item, index){ %>
+								<tr>
+										<td width="20%"><%=item.bid %></td>
+										<td width="40%">
+											<a  href="/board/update?bid=<%=item.bid%>" ><%=item.title %></a>
+										</td>
+										<td width="20%"><%=item.user_id %></td>
+										<td width="20%"><%=item.cdate2     %></td>
+									</tr>
+							<% }); %>
+						<% } %>
+					<% } else {%>
+						<tr>
+							<td colspan="4">에러 잠시후 다시 시도하세요.</td>
+						</tr>
+					<% } %>
+				</table>
+				<div align="right">
+					<button id="btn_board_new">새글 등록</button>
+					<button id="btn_board_list">Home</button>
+				</div>
+			</div>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="/javascripts/board.js"></script>
+	</body>
+</html>

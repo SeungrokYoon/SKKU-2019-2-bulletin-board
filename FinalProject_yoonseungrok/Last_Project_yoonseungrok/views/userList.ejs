@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Board</title>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	</head>
+	<body>
+		<div class="board-page">
+			<div class="board">
+				<p align="right"> <%=login_id%>(<%=user_name %>)님 관리자 페이지에 오신 것을 환영합니다.
+					<button id="btn_logout">Log-out</button>
+					<button id="btn_board_list">글 목록</button></p>
+
+				<h1>사용자 목록</h1>
+
+				<!-- 검색 시작 -->
+				<div class="search" align="right">
+					<form action = "/users/list/search" id="searchKeyuser" method = "post">
+						<!-- 이거 선택할 수 있게 수정하면 좋을텐데...시간이되려나 -->
+						<button id="sortOfSearch" type="text" readonly>ID+이름+이메일</button>
+						<input name="searchKeyword2" id = "searchKey" type="text" />
+						<button id="btn_user_search">검색</button>
+					</form>
+				</div>
+				<!-- 검색 종료 -->
+
+				<table class="title">
+					<tr>
+						<th width="10%">번호</th>
+						<th width="15%">아이디</th>
+						<th width="25%">유저이름</th>
+						<th width="30%">이메일</th>
+						<th width="20%">등록일</th>
+						<!-- <th width="20%">수정일</th> -->
+
+					</tr>
+				</table>
+				<table class="content">
+					<% if(status == 'OK') { %>
+						<% if(data.length == 0) { %>
+							<tr>
+								<td colspan="4">데이터가 없다.</td>
+							</tr>
+						<% } else { %>
+							<% data.forEach(function(item, index){ %>
+								<tr>
+									
+									<td width="10%"><%=item.uid %></td>
+									<td width="15%">
+										<a  href="/users/update?uid=<%=item.uid%>" ><%=item.login_id %></a>									</td>
+									<td width="25%"><%=item.user_name %></td>
+									<td width="30%"><%=item.email %></td>
+									<td width="20%"><%=item.cdate2     %></td>
+								</tr>
+							<% }); %>
+						<% } %>
+					<% } else {%>
+						<tr>
+							<td colspan="4">에러 잠시후 다시 시도하세요.</td>
+						</tr>
+					<% } %>
+				</table>
+				<div align="right">
+					<button id="btn_user_list">Home</button>
+				</div>
+			</div>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="/javascripts/users.js"></script>
+	</body>
+</html>

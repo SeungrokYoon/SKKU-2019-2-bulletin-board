@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Board</title>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	</head>
+	<body>
+	<div class="board-page">
+	<div class="board">
+		<h1>수정</h1>
+		<div align="right">작성자: <%= author_id %></div>
+		<div align="right">최초작성일: <%= cdate2 %></div>
+		<div class="board-form">
+				<input style="height:30px;font-size:14pt;" type="text" value="<제목>" readonly="readonly"/>
+				<input align="left" id="original_board_title" style="height:14px;font-size:14pt;" value= "<%=title%>"readonly="readonly"/> 
+				<% if( login_id != author_id) { %>
+					<input readonly="readonly" style="height:14px;font-size:14pt;" placeholder="원본 작성자만 수정 또는 삭제가 가능합니다."/>
+					<input id="bid" type="hidden" value= <%=bid%> />
+					<input style="height:30px;font-size:14pt;" type="text" value="<내용>" readonly="readonly"/>
+					<input id="new_board_content" style="height:100px;font-size:10pt;" rows="4" type="text" value="<%=content%>" readonly="readonly"/>
+					<div align="right">
+						<button id="btn_board_list">목록</button>
+					</div>
+				<% } else { %>
+					<input id="new_board_title"  style="height:14px;font-size:14pt;" placeholder="새 제목을 입력해주세요 입력 안하시면 원래 제목이 유지됩니다."/>
+					<input id="bid" type="hidden" value= <%=bid%> />
+					<input style="height:30px;font-size:14pt;" type="text" value="<내용>" readonly="readonly"/>
+					<input id="new_board_content" style="height:100px;font-size:10pt;" rows="4" type="text" value="<%=content%>"/>
+					<div align="right">
+						<button id="btn_board_update" type="submit" >수정</button>
+						<button id="btn_board_delete">삭제</button>
+						<button id="btn_board_list">목록</button>
+					</div>
+				<%}%>
+		</div>
+	</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="/javascripts/board.js"></script>
+	</body>
+</html>

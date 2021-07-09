@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Board</title>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	</head>
+	<body>
+	<div class="board-page">
+	<div class="board">
+		<h1>수정</h1>
+		<div align="right">관리자_ID: <%= session_id%></div>
+		<div align="right">수정대상_사용자ID: <%= loger %></div>
+		<div align="right">최초작성일: <%= cdate2 %></div>
+		<div class="board-form">
+				<input style="height:30px;font-size:14pt;" type="text" value="<사용자ID>" readonly="readonly"/>
+				<input align="left" id="login_id" style="height:14px;font-size:14pt;" value= "<%=loger%>"/> 
+				<input style="height:30px;font-size:14pt;" type="text" value="<사용자이름>" readonly="readonly"/>
+				<input align="left" id="user_name" style="height:14px;font-size:14pt;" value= "<%=user_name%>"/> 
+				<input style="height:30px;font-size:14pt;" type="text" value="<비밀번호>" readonly="readonly"/>
+				<input align="left" id="user_pwd" style="height:14px;font-size:14pt;" value= "<%=user_pwd%>"/> 
+				<input id="uid" type="hidden" value= <%=uid%> />
+				<input style="height:30px;font-size:14pt;" type="text" value="<이메일주소>" readonly="readonly"/>
+				<input id="email" style="height:100px;font-size:10pt;" rows="4" type="text" value="<%=email%>"/>
+				<div align="right">
+					<button id="btn_user_update" type="submit" >수정</button>
+					<button id="btn_user_delete">삭제</button>
+					<button id="btn_user_list">사용자목록</button>
+				</div>
+				
+		</div>
+	</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="/javascripts/users.js"></script>
+	</body>
+</html>
